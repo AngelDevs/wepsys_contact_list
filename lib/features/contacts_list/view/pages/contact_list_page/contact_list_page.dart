@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wepsys_contact_list/features/contacts_list/view/widgets/contact_list/contact_list.dart';
 import 'package:wepsys_contact_list/features/contacts_list/view_models/contact_list_page_view_model/contact_list_page_view_model.dart';
+import 'package:wepsys_contact_list/features/core/models/contact/contact.dart';
 
 class ContactListPage extends StatelessWidget {
   static const String route = '/';
@@ -18,21 +20,13 @@ class ContactListPage extends StatelessWidget {
             appBar: AppBar(
               title: const Text('Contacts'),
             ),
-            body: ListView.builder(
-              itemCount: value.contacts.length,
-              itemBuilder: (context, index) {
-                final contact = contacts[index];
-                return ListTile(
-                  onTap: () => value.edit(context, contact),
-                  title: Text(
-                    '${contact.name} ${contact.lastName}',
-                  ),
-                  subtitle: Text(contact.phone),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                  ),
-                );
-              },
+            body: _buildBody(
+              context,
+              contacts,
+              (contact) => value.edit(
+                context,
+                contact,
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () => value.add(context),
@@ -43,6 +37,23 @@ class ContactListPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  Widget _buildBody(
+    BuildContext context,
+    List<Contact> contacts,
+    Function(Contact) onTap,
+  ) {
+    if (contacts.isEmpty) {
+      return const Center(
+        child: Text('Contact list is empty'),
+      );
+    }
+
+    return ContactList(
+      contacts: contacts,
+      onTap: (contact) => onTap(contact),
     );
   }
 }
