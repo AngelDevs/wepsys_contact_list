@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wepsys_contact_list/routes/router.dart';
+import 'package:wepsys_contact_list/router/router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -9,11 +9,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ContactList',
       theme: ThemeData(
-    
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
       routes: routes,
-      
     );
   }
 }
