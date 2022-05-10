@@ -1,6 +1,6 @@
 # wepsys_contact_list
 
-A new Flutter project.
+A Contact list project made as an Exercise for Wepsys.
 
 ## Getting Started
 
