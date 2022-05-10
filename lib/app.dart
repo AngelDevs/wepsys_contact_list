@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wepsys_contact_list/routes/router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
     
         primarySwatch: Colors.blue,
       ),
-      home: const SizedBox(),
+      routes: routes,
+      
     );
   }
 }
